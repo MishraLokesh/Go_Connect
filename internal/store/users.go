@@ -3,6 +3,8 @@ package store
 import (
 	"context"
 	"database/sql"
+
+	// "github.com/lib/pq"
 )
 
 type User struct {
