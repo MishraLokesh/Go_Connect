@@ -1,10 +1,13 @@
 package main
 
-import "log"
+import (
+	"log"
+	"github.com/MishraLokesh/social/internal/env"
+)
 
 func main() {
 	cfg := &config{
-		addr: ":8080",
+		addr: env.GetString("ADDR", ":8080"),
 	}
 	app := &application{
 		config: *cfg,
@@ -12,4 +15,3 @@ func main() {
 	mux := app.mount()
 	log.Fatal(app.run(mux))
 }
-
