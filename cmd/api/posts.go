@@ -22,6 +22,11 @@ func (app *application) createPostHandler(w http.ResponseWriter, r *http.Request
 		return
 	}
 
+	if err := Validate.Struct(payload); err != nil {
+		app.badRequestResponse(w, r, err)
+		return 
+	}
+
 	post := &store.Post{
 		Title:   payload.Title,
 		Content: payload.Content,
